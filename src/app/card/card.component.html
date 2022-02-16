@@ -1,0 +1,25 @@
+<div *ngIf="vacancy" class="card">
+    <img src="/assets/images/banner.png" alt="banner">
+
+    <div [style.padding.px]='20'>
+        <p class="banner new">
+            {{ vacancy.hot ? 'Горячая' : 'Новая' }}
+        </p>
+
+
+        <div class="">
+            <h3>{{ vacancy.name }}</h3>
+
+            <div class="logo">
+                <img [src]="'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' + vacancy.logo " alt="logo">
+            </div>
+
+
+            <div>
+                <div *ngFor="let bage of vacancy.badges">
+                    {{ bage | json }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

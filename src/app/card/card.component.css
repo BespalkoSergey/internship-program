@@ -1,0 +1,31 @@
+.card {
+    height: 370px;
+    width: 750px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+    overflow: hidden;
+}
+
+.banner{
+    font-size: 14px;
+    padding: 2px 10px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.banner.hot{
+    background-color: #ffff00;
+    color: #c5c52c;
+}
+
+.banner.new{
+    background: #FFE9E9;
+    color: #BC0002;
+}
+
+.logo {
+    width: 120px;
+    height: 60px;
+    display: flex;
+}
