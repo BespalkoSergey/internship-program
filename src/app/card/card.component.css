@@ -1,5 +1,13 @@
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
 .card {
-  height: 370px;
   width: 750px;
   border-radius: 5px;
   background: #ffffff;
@@ -72,6 +80,20 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 0 0 0;
+}
+.action {
+  display: flex;
+  gap: 20px;
+}
+.action > button {
+  display: flex;
+  align-items: center;
+}
+.action .text {
+  color: #ff5252;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 16px;
 }
 .time {
   font-size: 14px;

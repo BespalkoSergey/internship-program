@@ -7,14 +7,28 @@ import { VacancyType } from '../../assets/data/vacancy'
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  isLiked = false
+  isAplly = false
+  isFavorite = false
 
-  @Input()
-  vacancy: VacancyType | null = null
+  data: VacancyType | null = null
+
+  @Input() set vacancy(vacancy:VacancyType){
+    this.data = vacancy
+    this.isAplly = vacancy.isApply
+    this.isLiked = vacancy.isLiked
+  }
 
   constructor() {
   }
-
-  getLink(name: string): string {
-    return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
+  public setFavorite() {
+    this.isFavorite = !this.isFavorite
   }
+
+  public setLiked() {
+    this.isLiked = !this.isLiked
+  }
+ public applyVacancy(){
+   this.isAplly = true
+ }
 }

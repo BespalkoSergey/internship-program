@@ -1,16 +1,20 @@
-import { VACANCY } from './../../assets/data/vacancy';
+import {  VacancyType } from './../../assets/data/vacancies';
 import { Component, OnInit } from '@angular/core';
+import { ListService } from './list.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  providers: [ListService]
 })
 export class ListComponent implements OnInit {
 
-  vacancy = VACANCY
-
-  constructor() { }
+  vacancies:VacancyType[]
+ 
+  constructor(private listService: ListService) {
+    this.vacancies = this.listService.getVacancies()
+   }
 
   ngOnInit(): void {
   }

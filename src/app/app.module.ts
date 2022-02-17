@@ -6,12 +6,13 @@ import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListComponent,
-    CardComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule

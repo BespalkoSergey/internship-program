@@ -1,18 +1,18 @@
-<div *ngIf="vacancy" class="card">
+<div *ngIf="data" class="card">
   <img src="/assets/images/banner.png" alt="banner" />
 
   <div [style.padding.px]="20">
-    <p class="banner new">
-      {{ vacancy.hot ? "Горячая" : "Новая" }}
+    <p class="banner" [ngClass]="{ hot: data.hot, new: !data.hot }">
+      {{ data.hot ? "Горячая" : "Новая" }}
     </p>
 
     <div class="vacancy">
-      <h3>{{ vacancy.name }}</h3>
+      <h3>{{ data.name }}</h3>
       <div class="logo">
         <img
           [src]="
             'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' +
-            vacancy.logo
+            data.logo
           "
           alt="logo"
         />
@@ -20,23 +20,56 @@
     </div>
 
     <div class="salary">
-      {{ vacancy.salaryFrom }} - {{ vacancy.salaryTo }} ₴
-      <span>{{ vacancy.salaryComment }}</span>
+      {{ data.salaryFrom }} - {{ data.salaryTo }} ₴
+      <span>{{ data.salaryComment }}</span>
     </div>
 
     <div class="company">
-      <span>{{ vacancy.companyName }}</span> <span>{{ vacancy.cityName }}</span>
+      <span>{{ data.companyName }}</span> <span>{{ data.cityName }}</span>
     </div>
 
     <div class="badges">
-      <div *ngFor="let bage of vacancy.badges">
+      <div *ngFor="let bage of data.badges">
         {{ bage.name }}
       </div>
     </div>
 
     <div class="footerCard">
-      <div class="action"></div>
-      <div class="time">37 минут назад</div>
+      <div class="action">
+        <button (click)="applyVacancy()">
+          <img src="/assets/images/Apply.svg" alt="Apply" />
+          <span class="text">Откликнуться</span>
+        </button>
+
+        <button (click)="setFavorite()">
+          <img
+            *ngIf="isFavorite; else notFavorite"
+            src="/assets/images/Icon-Favorite-Star-Filled.svg"
+            alt="Favorite-Star-Filled"
+          />
+          <ng-template #notFavorite>
+            <img
+              src="/assets/images/Icon-Favorite-Star-Empty.svg"
+              alt="Favorite-Star-Empty"
+            />
+          </ng-template>
+        </button>
+
+        <button (click)="setLiked()">
+          <img
+            *ngIf="isLiked; else notLiked"
+            src="/assets/images/Icon-Dislike-Filled.svg"
+            alt="Icon-Dislike-Empty"
+          />
+          <ng-template #notLiked>
+            <img
+              src="/assets/images/Icon-Dislike-Empty.svg"
+              alt="Icon-Dislike-Empty"
+            />
+          </ng-template>
+        </button>
+      </div>
+      <div class="time">{{ data.dateTxt }}</div>
     </div>
   </div>
 </div>
