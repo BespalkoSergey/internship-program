@@ -1,0 +1,49 @@
+<div *ngIf="vacancy" class="card">
+    <img src="/assets/images/banner.jpeg" alt="banner">
+    <div [style.padding.px]="20">
+        <p class="banner new">
+            {{ vacancy.hot? 'Горячая' : 'Новая' }}
+        </p>
+        <div class="vacancy-desc">
+            <div>
+                <h3>{{ vacancy.name }}</h3>
+                <p class="salary">{{vacancy.salaryFrom}} - {{vacancy.salaryTo}}</p>
+                <p><span class="company-name">{{vacancy.companyName}}</span>
+                    <span class="city-name">{{vacancy.cityName}}</span>
+                </p>
+            </div>
+            <div>
+                <img class="logo" [src]="getLink(vacancy.logo)" alt="logo">
+            </div>
+
+        </div>
+        <div class="badges">
+            <ul class="badges-list">
+                <li *ngFor="let badge of vacancy.badges">{{badge.name}}</li>
+            </ul>
+        </div>
+
+        <div class="card-buttons">
+            <div class="respond-button">
+
+                <button class="respond-btn">
+                    <img class="apply-icon" src="/assets/images/Icon-Apply.png" [style.padding-right.px]="10">
+                    <p >Откликнуться</p>
+                </button>
+
+                <button [style.margin-right.px]="30" (click)="onClick($event)">
+                    <img class="like" src="/assets/images/star.png">
+                </button>
+
+                <button>
+                    <img class="dislike" src="/assets/images/dislike.png">
+                </button>
+                
+            </div>
+            <div>
+                <p class="publication-time">{{vacancy.dateTxt}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
