@@ -7,7 +7,7 @@ export const VACANCY = {
   "publicationType": 1,
   "date": "2022-01-24T10:01:00.66",
   "dateTxt": "1 день назад",
-  "hot": true,
+  "hot": false,
   "salary": 0,
   "salaryFrom": 10000,
   "salaryTo": 15000,

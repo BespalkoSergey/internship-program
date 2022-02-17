@@ -1,5 +1,5 @@
 .card {
-    height: 370px;
+    min-height: 370px;
     width: 750px;
     border-radius: 5px;
     background: #FFFFFF;
@@ -7,19 +7,20 @@
     overflow: hidden;
 }
 
-.banner{
+.banner {
     font-size: 14px;
     padding: 2px 10px;
     display: inline;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.banner.hot{
+.banner.hot {
     background-color: #ffff00;
     color: #c5c52c;
 }
 
-.banner.new{
+.banner.new {
     background: #FFE9E9;
     color: #BC0002;
 }
@@ -28,4 +29,62 @@
     width: 120px;
     height: 60px;
     display: flex;
+    align-items: center;
+}
+
+.logo img{
+    max-width: 100%;
+    height: auto;
+    max-height:100%
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    padding: 5px 10px;
+    border: 1px solid #C8D1D6;
+    border-radius: 5px;
+}
+
+.badges {
+    display: flex;
+    gap: 10px;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.apply {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.apply .text {
+    color: #FF5252;
+    font-weight: bold;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.action-buttons{
+    padding: 0 20px 20px 20px;
+    display: flex;
+}
+
+.action-buttons button {
+    height: 20px;
 }
