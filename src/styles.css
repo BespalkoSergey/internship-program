@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Graphik";
+    src: local("Graphik"), url(https://images.cf-rabota.com.ua/2017/05/fonts/graphik/Graphik-Regular-Web.woff2) format("truetype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Graphik";
+    src: local("Graphik"), url(https://images.cf-rabota.com.ua/2017/05/fonts/graphik/Graphik-Bold-Web.woff2) format("truetype");
+    font-weight: bold;
+}
+
+html{
+    font-size: 10px;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #E5E5E5;
+    font-family: 'Graphik';
+}
+
+
+

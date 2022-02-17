@@ -1,0 +1,72 @@
+<div *ngIf="data" class="card">
+    <!-- Top image -->
+    <img src="/assets/images/banner.png" alt="banner">
+
+
+    <!-- All content of the card -->
+    <div class="content">
+        <!-- Hot, new, not interested vacancy -->
+        <p class="banner new">
+            {{ data.hot ? 'Горячая' : 'Новая' }}
+        </p>
+        <!-- Information about the vacancy -->
+        <div class="info-and-footer">
+            <!-- Name of the position and its logo -->
+                <div class="flexDivide">
+                    <h2>{{ data.name }}</h2>
+                    <img class="logoImg" [src]="'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' + data.logo " alt="logo">
+                    
+                </div>
+
+                <!-- Salary, company name and address -->
+                <div class="info">
+                    <!-- Salary -->
+                <div>
+                <span>{{data.salaryFrom}}</span> - <span>{{data.salaryTo}}</span>  UAN <span [ngStyle]="{opacity: '0.5'}">{{data.salaryComment}}</span>
+                </div>
+                <!-- Name and address -->
+                <div>
+                    <span class="redText">{{data.companyName}}</span>  <span [ngStyle]="{marginLeft: '30px'}">{{data.cityName}}</span>
+                </div>
+
+            </div>
+                 
+            <!-- Vacancy's benefits -->
+                <div class="benefits">
+                    <!-- Interation of each benefit -->
+                    <div *ngFor="let bage of data.badges">
+                        <span class="benefit">{{ bage.name }}</span>
+                    </div>
+                </div>
+                <!-- Bottom part of the card -->
+            <div class="cardFooter">
+                <!-- All red icons and text from the left side -->
+                <div class="bottomImages">
+                    <button (click)="applyVacancy()" class="pure">
+                        <img src="/assets/images/HumanIcon.png" alt="human-icon">
+                     <span class="redFatText">Откликнуться</span>
+                    </button>
+                    <button (click)="setFavorite()" class="pure">
+                        <img *ngIf="!isFavorite; else notLiked" src="/assets/images/Star.png" alt="star-icon">
+                        <ng-template #notLiked>
+                            <img src="/assets/images/Star-filled.png" alt="star-icon">
+                        </ng-template>
+                        
+                    </button>
+
+                    <button (click)="setDislike()" class="pure">
+                        <img *ngIf="!isLiked; else Disliked" src="/assets/images/Dislike.png" alt="dislike-icon">
+                        <ng-template #Disliked>
+                            <img src="/assets/images/Dislike-filled.png" alt="">
+                        </ng-template>
+                        
+                    </button>
+                   
+                    
+                </div>
+                <!-- Transparent date from the right side -->
+                <span [ngStyle]="{opacity: '0.5'}">{{data.dateTxt}}</span>
+            </div>
+        </div>
+    </div>
+    </div>

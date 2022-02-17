@@ -1,0 +1,123 @@
+.card {
+    height: 370px;
+    width: 750px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.content{
+    padding: 20px;
+}
+
+/* All banner styles */
+
+.banner{
+    font-size: 14px;
+    padding: 2px 10px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.banner.hot{
+    background-color: #ffff00;
+    color: #c5c52c;
+}
+
+.banner.new{
+    background: #FFE9E9;
+    color: #BC0002;
+}
+
+/* Styles for logo */
+
+.logoImg{
+    width: 200px;
+    height: 60px;
+}
+
+/* Info and salary styles */
+
+.info div{
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.salaryAndCompany{
+    font-size: 16px;
+}
+
+
+
+/* Benefits styles */
+
+.benefits{
+    display: flex;
+    margin-top: 20px;
+}
+
+.benefits .benefit{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 20px;
+
+    border: 1px solid #C8D1D6;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 2px;
+}
+
+/* Card's footer styles */
+
+.cardFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pure{
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.bottomImages{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomImages img{
+    margin: 0 5px;
+}
+
+/* Additional styles for my elements */
+
+.flexDivide{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redText{
+    color: red;
+    font-size: 16px;
+}
+
+.redFatText{
+    font-weight: 700;
+    color: red;
+    font-size: 16px;
+}
