@@ -1,0 +1,36 @@
+<main>
+    <section>
+            <div *ngIf="vacancy" class="card">
+                <img class="banner" src="/assets/images/image 57.png" alt="banner">
+                <div [style.padding.px]="20">
+                    <p class="status" [ngClass]="vacancy.hot ? 'hot' : 'new' ">{{vacancy.hot ? 'Горячая' : 'Новая'}}</p>
+                    <div class="employer-container">
+                        <h3>{{vacancy.name}}</h3>
+                        <div class="logo" >
+                            <img class="logoimg" [src]="getLink(vacancy.logo)" alt="logo">
+                        </div>
+                    </div>
+                    <p class="salary-container"><span>{{vacancy.salaryFrom}}</span> – <span>{{vacancy.salaryTo}}</span> &#8372; <span [style.color]="'#687e88'" >{{vacancy.salaryComment}}</span></p>
+                    <p class="employer-info"><span class="employer-name">{{vacancy.companyName}}</span><span>{{vacancy.cityName}}</span></p>
+                    <div class="benefit-container">
+                        <ul class="benefits-list">
+                            <li class="benefit-item" *ngFor="let badge of vacancy.badges">{{badge?.name}}</li>
+                        </ul> 
+                    </div>
+                    <div class="container">
+                        <p class="time">{{vacancy.dateTxt}}</p>
+                        <div class="buttons">
+                            <button class="button apply" type="button">
+                                <app-svg-apply></app-svg-apply>
+                                <span [style.marginLeft.px]="10"></span>Откликнуться</button>
+                            <div>
+                                <button [style.padding.px]="10" class="button" type="button"><app-svg-fav></app-svg-fav></button>
+                                <button [style.padding.px]="10" class="button" type="button"><app-svg-dislike></app-svg-dislike></button>
+                            </div>
+                            <img src="/assets/images/dislike.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>
