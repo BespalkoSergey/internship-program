@@ -1,0 +1,37 @@
+
+<div *ngIf="vacancy" class="card">
+    <img src="/assets/images/baner.png" alt="baner">
+    <div [style.padding.px]="20">
+        <p class="baner new" >
+            {{ vacancy.hot? 'Горящая': 'Новая'}}
+        </p>
+        <div class="company" >
+            <h3>{{ vacancy.name }}</h3>
+            <div class="logo"> <img [src]="getLink(vacancy.logo)" alt="logo"></div>
+           
+        </div>
+        <div class="salary">
+            <p class="money">{{vacancy.salaryFrom}} — {{vacancy.salaryTo}}</p>
+            <p class="comment">{{vacancy.salaryComment}}</p>
+        </div>
+        <div class='deskr'>
+            <span class='comp'>{{vacancy.companyName | uppercase}}</span>
+            <span class='location'>{{vacancy.cityName}}</span>
+        </div>
+        <div class="badges">
+            <ul class="badges-list" >
+                <li class="badges-item" *ngFor="let bage  of vacancy.badges">{{bage.name}}</li>
+                               
+            </ul>
+         </div>
+         <div class="card-footer">
+            <div class="btns">
+                <span class="resp">Откликнуться</span>
+                <img class="btn like" src="/assets/images/star.png" alt="like" (click)="onClick($event)">
+                <img class="btn dis" src="/assets/images/dis.png" alt="dislike">
+            </div>
+            <p class="time">{{vacancy.dateTxt}}</p>
+         </div>
+   
+</div>
+
