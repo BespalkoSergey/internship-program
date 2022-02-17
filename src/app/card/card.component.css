@@ -1,31 +1,79 @@
 .card {
-    height: 370px;
-    width: 750px;
-    border-radius: 5px;
-    background: #FFFFFF;
-    box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
-    overflow: hidden;
+  height: 370px;
+  width: 750px;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+  overflow: hidden;
 }
 
-.banner{
-    font-size: 14px;
-    padding: 2px 10px;
-    display: inline;
-    border-radius: 5px;
+.banner {
+  font-size: 14px;
+  padding: 2px 10px;
+  display: inline;
+  border-radius: 5px;
 }
 
-.banner.hot{
-    background-color: #ffff00;
-    color: #c5c52c;
+.banner.hot {
+  background-color: #ffff00;
+  color: #c5c52c;
 }
 
-.banner.new{
-    background: #FFE9E9;
-    color: #BC0002;
+.banner.new {
+  background: #ffe9e9;
+  color: #bc0002;
 }
-
+.vacancy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .logo {
-    width: 120px;
-    height: 60px;
-    display: flex;
+  height: 60px;
+  display: flex;
+}
+.salary {
+  display: inline;
+  font-size: 20px;
+  color: #212527;
+  padding: 10px 0;
+}
+.salary span {
+  font-size: 16px;
+  line-height: 30px;
+  color: gray;
+}
+.company {
+  padding: 15px 0 10px 0;
+}
+.company span {
+  font-size: 16px;
+  line-height: 20px;
+}
+.company span:first-child {
+  color: #ff5252;
+  padding: 0 20px 0 0px;
+}
+.badges {
+  display: flex;
+  gap: 5px;
+}
+.badges > div {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #212527;
+  border: 1px solid #c8d1d6;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+.footerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0 0 0;
+}
+.time {
+  font-size: 14px;
+  color: #687e88;
 }

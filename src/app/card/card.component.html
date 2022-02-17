@@ -1,25 +1,42 @@
 <div *ngIf="vacancy" class="card">
-    <img src="/assets/images/banner.png" alt="banner">
+  <img src="/assets/images/banner.png" alt="banner" />
 
-    <div [style.padding.px]='20'>
-        <p class="banner new">
-            {{ vacancy.hot ? 'Горячая' : 'Новая' }}
-        </p>
+  <div [style.padding.px]="20">
+    <p class="banner new">
+      {{ vacancy.hot ? "Горячая" : "Новая" }}
+    </p>
 
-
-        <div class="">
-            <h3>{{ vacancy.name }}</h3>
-
-            <div class="logo">
-                <img [src]="'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' + vacancy.logo " alt="logo">
-            </div>
-
-
-            <div>
-                <div *ngFor="let bage of vacancy.badges">
-                    {{ bage | json }}
-                </div>
-            </div>
-        </div>
+    <div class="vacancy">
+      <h3>{{ vacancy.name }}</h3>
+      <div class="logo">
+        <img
+          [src]="
+            'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' +
+            vacancy.logo
+          "
+          alt="logo"
+        />
+      </div>
     </div>
+
+    <div class="salary">
+      {{ vacancy.salaryFrom }} - {{ vacancy.salaryTo }} ₴
+      <span>{{ vacancy.salaryComment }}</span>
+    </div>
+
+    <div class="company">
+      <span>{{ vacancy.companyName }}</span> <span>{{ vacancy.cityName }}</span>
+    </div>
+
+    <div class="badges">
+      <div *ngFor="let bage of vacancy.badges">
+        {{ bage.name }}
+      </div>
+    </div>
+
+    <div class="footerCard">
+      <div class="action"></div>
+      <div class="time">37 минут назад</div>
+    </div>
+  </div>
 </div>
