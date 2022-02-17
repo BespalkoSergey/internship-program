@@ -7,7 +7,6 @@ import { VacancyType } from '../../assets/data/vacancy'
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-
   isLiked = false
   isApply = false
   isFavorite = false
@@ -20,18 +19,15 @@ export class CardComponent {
     this.isLiked = vacancy.isLiked
   }
 
-  constructor() {
-  }
-
-  applyVacancy() {
+  public applyVacancy() {
 
   }
 
-  setFavorite() {
+  public setFavorite() {
     this.isFavorite = !this.isFavorite
   }
 
-  setLiked() {
+  public setLiked() {
     this.isLiked = !this.isLiked
   }
 }
