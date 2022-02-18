@@ -17,7 +17,7 @@
 
         <p [style.marginBottom.px]="10">
             <span *ngIf="!!data.salaryFrom && !!data.salaryTo">
-                {{ data.salaryFrom }} — {{ data.salaryTo }} ₴
+                {{ data.salaryFrom | double }} — {{ data.salaryTo | double }} ₴
             </span>
             &#8195;
             <span [style.color]="'#687E88'">{{ data.salaryComment }}</span>
@@ -42,19 +42,12 @@
         </button>
 
         <button [style.marginRight.px]="10" (click)="setFavorite()">
-            <img *ngIf="isFavorite; else notFavorite" src="/assets/images/Icon-Favorite-Star-Filled.svg"
-                alt="Icon Favorite Star Filled">
-            <ng-template #notFavorite>
-                <img src="/assets/images/Icon-Favorite-Star-Empty.svg" alt="Icon Favorite Star Empty">
-            </ng-template>
+            <app-favorite-icon [isFilled]="isFavorite"></app-favorite-icon>
         </button>
 
 
         <button (click)="setLiked()">
-            <img *ngIf="isLiked; else notLiked" src="/assets/images/Icon-Dislike-Filled.svg" alt="Icon Dislike Filled">
-            <ng-template #notLiked>
-                <img src="/assets/images/Icon-Dislike-Empty.svg" alt="Icon Dislike Empty">
-            </ng-template>
+            <app-dislike-icon [isFilled]="isLiked"></app-dislike-icon>
         </button>
 
         <p class="time">{{ data.dateTxt }}</p>
