@@ -1,10 +1,18 @@
-<div *ngIf="data" class="card">
+<div *ngIf="data" class="card" [ngClass]="{ opacity: isLiked || isAplly }">
   <img src="/assets/images/banner.png" alt="banner" />
 
   <div [style.padding.px]="20">
-    <p class="banner" [ngClass]="{ hot: data.hot, new: !data.hot }">
-      {{ data.hot ? "Горячая" : "Новая" }}
-    </p>
+    <container-element [ngSwitch]="!isLiked || !isAplly">
+      <p class="banner dislike" *ngSwitchCase="isLiked">Неинтересная</p>
+      <p class="banner submitted" *ngSwitchCase="isAplly">Вы откликнулись</p>
+      <p
+        class="banner"
+        *ngSwitchDefault
+        [ngClass]="{ hot: data.hot, new: !data.hot }"
+      >
+        {{ data.hot ? "Горячая" : "Новая" }}
+      </p>
+    </container-element>
 
     <div class="vacancy">
       <h3>{{ data.name }}</h3>
@@ -36,40 +44,28 @@
 
     <div class="footerCard">
       <div class="action">
-        <button (click)="applyVacancy()">
+        <label *ngIf="!fileName" class="apply">
+          <input
+            type="file"
+            accept=".doc, .docx, .txt, .rtf, .odt, .pdf"
+            (input)="applyVacancy($event)"
+          />
           <img src="/assets/images/Apply.svg" alt="Apply" />
           <span class="text">Откликнуться</span>
-        </button>
-
+        </label>
         <button (click)="setFavorite()">
-          <img
-            *ngIf="isFavorite; else notFavorite"
-            src="/assets/images/Icon-Favorite-Star-Filled.svg"
-            alt="Favorite-Star-Filled"
-          />
-          <ng-template #notFavorite>
-            <img
-              src="/assets/images/Icon-Favorite-Star-Empty.svg"
-              alt="Favorite-Star-Empty"
-            />
-          </ng-template>
+          <app-favorite [isFilled]="isFavorite"></app-favorite>
         </button>
-
         <button (click)="setLiked()">
-          <img
-            *ngIf="isLiked; else notLiked"
-            src="/assets/images/Icon-Dislike-Filled.svg"
-            alt="Icon-Dislike-Empty"
-          />
-          <ng-template #notLiked>
-            <img
-              src="/assets/images/Icon-Dislike-Empty.svg"
-              alt="Icon-Dislike-Empty"
-            />
-          </ng-template>
+          <app-dislike [isFilled]="isLiked"></app-dislike>
         </button>
+        <div *ngIf="fileName" class="publication">
+          Отправлено резюме
+          <a href="#">«{{ fileName }}»</a>
+        </div>
       </div>
       <div class="time">{{ data.dateTxt }}</div>
     </div>
   </div>
+  <app-error *ngIf="isErrorFile"></app-error>
 </div>

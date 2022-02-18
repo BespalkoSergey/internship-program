@@ -8,13 +8,15 @@ button {
   outline: inherit;
 }
 .card {
-  width: 750px;
+  max-width: 750px;
   border-radius: 5px;
   background: #ffffff;
   box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
   overflow: hidden;
 }
-
+.opacity {
+  opacity: 0.5;
+}
 .banner {
   font-size: 14px;
   padding: 2px 10px;
@@ -30,6 +32,14 @@ button {
 .banner.new {
   background: #ffe9e9;
   color: #bc0002;
+}
+.banner.dislike {
+  background: #c8d1d6;
+  color: #303a3e;
+}
+.banner.submitted {
+  background: #d5ffe6;
+  color: #00702d;
 }
 .vacancy {
   display: flex;
@@ -52,7 +62,7 @@ button {
   color: gray;
 }
 .company {
-  padding: 15px 0 10px 0;
+  padding: 10px 0 15px 0;
 }
 .company span {
   font-size: 16px;
@@ -79,12 +89,19 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 0 0 0;
+  padding: 20px 0 0 0;
 }
 .action {
   display: flex;
   gap: 20px;
 }
+.apply {
+  cursor: pointer;
+}
+.apply input {
+  display: none;
+}
+
 .action > button {
   display: flex;
   align-items: center;
@@ -94,6 +111,19 @@ button {
   padding-left: 10px;
   font-weight: bold;
   font-size: 16px;
+}
+.publication {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-size: 16px;
+  text-align: left;
+  color: #212527;
+}
+.publication a {
+  text-decoration: none;
+  color: #ff5252;
+  padding-left: 10px;
 }
 .time {
   font-size: 14px;
