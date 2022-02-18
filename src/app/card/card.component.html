@@ -1,57 +1,57 @@
-            <div *ngIf="vacancy" class="card">
-                <div class="veil" *ngIf="isApply || isDislike"></div>
-                <img class="banner" src="/assets/images/image 57.png" alt="banner">
-                <div [style.padding.px]="20">
-                    <div *ngIf="isApply; else elseStatus">
-                        <p class="status apply">Вы откликнулись</p>
-                    </div>
-                        <ng-template #elseStatus>
-                            <div *ngIf="isDislike; else newCard">
-                                <p class="status dislike">Неинтересная</p>
-                            </div>
-                            <ng-template #newCard>
-                                <p class="status new" *ngIf="vacancy.hot">Новая</p>
-                            </ng-template>
-                        </ng-template>
+<li *ngIf="vacancy" class="card">
+    <div class="veil" *ngIf="isApply || isDislike"></div>
+    <img class="banner" src="/assets/images/image 57.png" alt="banner">
+    <div [style.padding.px]="20">
+        <div *ngIf="isApply; else elseStatus">
+            <p class="status apply">Вы откликнулись</p>
+        </div>
+            <ng-template #elseStatus>
+                <div *ngIf="isDislike; else newCard">
+                    <p class="status dislike">Неинтересная</p>
+                </div>
+                <ng-template #newCard>
+                    <p class="status new" *ngIf="vacancy.hot">Новая</p>
+                </ng-template>
+            </ng-template>
 
-                    <div class="employer-container">
-                        <h3>{{vacancy.name}}</h3>
-                        <div class="logo" >
-                            <img class="logoimg" [src]="getLink(vacancy.logo)" alt="logo">
-                        </div>
-                    </div>
-                    <p class="salary-container">
-                        <span *ngIf="!!vacancy.salaryFrom && !!vacancy.salaryTo">{{vacancy.salaryFrom}} – {{vacancy.salaryTo}} &#8372; </span>
-                        <span [style.color]="'#687e88'" >{{vacancy.salaryComment}}</span>
-                    </p>
-                    <p class="employer-info"><span class="employer-name">{{vacancy.companyName}}</span><span>{{vacancy.cityName}}</span></p>
-                    <div class="benefit-container">
-                        <ul class="benefits-list">
-                            <li class="benefit-item" *ngFor="let badge of vacancy.badges">{{badge?.name}}</li>
-                        </ul> 
-                    </div>
-                    <div class="container">
-                        <p class="time">{{vacancy.dateTxt}}</p>
-                        <div class="buttons">
-                            <button class="button apply" type="button" (click)="getApply()" *ngIf="!isApply">
-                                <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
-                                <span [style.marginLeft.px]="10"></span>Откликнуться</button>
-                            
-                            <div>
-                                <button [style.padding.px]="10" class="button" type="button" (click)="getFavourite()">
-                                    <img [style.width.px]="20" *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
-                                        <ng-template #favouriteChecked>
-                                            <img [style.width.px]="20" src="/assets/images/svg/Icon-Favorite-checked.svg" alt="icon-favourite-checked">
-                                        </ng-template>
-                                </button>
-                                <button [style.padding.px]="10" class="button" type="button" (click)="getDislike()">
-                                    <img [style.width.px]="20" *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
-                                        <ng-template #dislikeChecked>
-                                            <img [style.width.px]="20" src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked">
-                                        </ng-template>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+        <div class="employer-container">
+            <h3>{{vacancy.name}}</h3>
+            <div class="logo" >
+                <img class="logoimg" [src]="getLink(vacancy.logo)" alt="logo">
+            </div>
+        </div>
+        <p class="salary-container">
+            <span *ngIf="!!vacancy.salaryFrom && !!vacancy.salaryTo">{{vacancy.salaryFrom}} – {{vacancy.salaryTo}} &#8372; </span>
+            <span [style.color]="'#687e88'" >{{vacancy.salaryComment}}</span>
+        </p>
+        <p class="employer-info"><span class="employer-name">{{vacancy.companyName}}</span><span>{{vacancy.cityName}}</span></p>
+        <div class="benefit-container">
+            <ul class="benefits-list">
+                <li class="benefit-item" *ngFor="let badge of vacancy.badges">{{badge?.name}}</li>
+            </ul> 
+        </div>
+        <div class="container">
+            <p class="time">{{vacancy.dateTxt}}</p>
+            <div class="buttons">
+                <button class="button apply" type="button" (click)="getApply()" *ngIf="!isApply">
+                    <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
+                    <span [style.marginLeft.px]="10"></span>Откликнуться</button>
+                
+                <div>
+                    <button [style.padding.px]="10" class="button" type="button" (click)="getFavourite()">
+                        <img [style.width.px]="20" *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
+                            <ng-template #favouriteChecked>
+                                <img [style.width.px]="20" src="/assets/images/svg/Icon-Favorite-checked.svg" alt="icon-favourite-checked">
+                            </ng-template>
+                    </button>
+                    <button [style.padding.px]="10" class="button" type="button" (click)="getDislike()">
+                        <img [style.width.px]="20" *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
+                            <ng-template #dislikeChecked>
+                                <img [style.width.px]="20" src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked">
+                            </ng-template>
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
+</li>
