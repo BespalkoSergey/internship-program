@@ -21,10 +21,7 @@ export class CardComponent {
     this.isLiked = vacancy.isLiked
   }
 
-  public applyVacancy() {
-    this.isUploadFailed = false
-
-  }
+  public applyVacancy() { }
 
   public setFavorite() {
     this.isFavorite = !this.isFavorite

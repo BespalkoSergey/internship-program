@@ -8,6 +8,7 @@ import { ListComponent } from './components/list/list.component';
 import { CardComponent } from './components/card/card.component';
 import { DislikeIconComponent } from './ui/dislike-icon/dislike-icon.component';
 import { FavoriteIconComponent } from './ui/favorite-icon/favorite-icon.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { FavoriteIconComponent } from './ui/favorite-icon/favorite-icon.componen
     CardComponent,
     DoublePipe,
     DislikeIconComponent,
-    FavoriteIconComponent
+    FavoriteIconComponent,
+    ErrorComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
