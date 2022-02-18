@@ -7,6 +7,8 @@ import { VacancyType } from '../../../assets/data/vacancy'
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  isUploadFailed = true
+
   isLiked = false
   isApply = false
   isFavorite = false
@@ -20,6 +22,7 @@ export class CardComponent {
   }
 
   public applyVacancy() {
+    this.isUploadFailed = false
 
   }
 
