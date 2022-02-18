@@ -12,9 +12,9 @@
   padding-right: 40px;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 340px) {
   .container {
-    width: 320px;
+    width: 340px;
   }
 }
 

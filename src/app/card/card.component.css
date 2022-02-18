@@ -8,6 +8,15 @@
   border-radius: 5px;
 }
 
+.veil {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: white;
+  height: 100%;
+  opacity: 0.5;
+}
+
 @media screen and (min-width: 1300px) {
   .card {
     width: 750px;
@@ -35,9 +44,14 @@
   border-radius: 5px;
 }
 
-.status.hot {
-  background-color: #dddd02;
-  color: #707009;
+.status.dislike {
+  background: #c8d1d6;
+  color: #303a3e;
+}
+
+.status.apply {
+  background: #d5ffe6;
+  color: #00702d;
 }
 
 .status.new {
@@ -96,21 +110,23 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+@media screen and (min-width: 1300px) {
+  .benefits-list {
+    flex-wrap: wrap;
+  }
 }
 
 .benefit-item {
-  display: inline-block;
-  white-space: nowrap;
   border: 1px solid #c8d1d6;
   border-radius: 5px;
   padding: 5px 10px;
   font-size: 14px;
   line-height: 1.43;
   color: #212527;
-}
-
-.benefit-item:not(:last-child) {
-  margin-right: 10px;
 }
 
 @media screen and (min-width: 1300px) {
@@ -132,6 +148,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 999;
 }
 
 .button {
@@ -148,6 +165,10 @@
   font-size: 16px;
   line-height: 1.25;
   color: #ff5252;
+}
+
+.icon-status {
+  z-index: 999;
 }
 
 @media screen and (min-width: 1300px) {
