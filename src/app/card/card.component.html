@@ -1,37 +1,44 @@
 
-<div *ngIf="vacancy" class="card">
+<div *ngIf="data" class="card" [ngClass]="{hide:isDislike}">
     <img src="/assets/images/baner.png" alt="baner">
     <div [style.padding.px]="20">
         <p class="baner new" >
-            {{ vacancy.hot? 'Горящая': 'Новая'}}
+            {{ data.hot? 'Горящая': 'Новая'}}
         </p>
         <div class="company" >
-            <h3>{{ vacancy.name }}</h3>
-            <div class="logo"> <img [src]="getLink(vacancy.logo)" alt="logo"></div>
+            <h3>{{ data.name }}</h3>
+            <div class="logo"> <img [src]="getLink(data.logo)" alt="logo"></div>
            
         </div>
-        <div class="salary">
-            <p class="money">{{vacancy.salaryFrom}} — {{vacancy.salaryTo}}</p>
-            <p class="comment">{{vacancy.salaryComment}}</p>
-        </div>
+  
+            <p class="money" *ngIf="!!data.salaryFrom && !!data.salaryTo">
+                {{data.salaryFrom}} — {{data.salaryTo}} ₴</p>
+            <p class="comment">{{data.salaryComment}}</p>
+      
         <div class='deskr'>
-            <span class='comp'>{{vacancy.companyName | uppercase}}</span>
-            <span class='location'>{{vacancy.cityName}}</span>
+            <span class='comp'>{{data.companyName | uppercase}}</span>
+            <span class='location'>{{data.cityName}}</span>
         </div>
         <div class="badges">
             <ul class="badges-list" >
-                <li class="badges-item" *ngFor="let bage  of vacancy.badges">{{bage.name}}</li>
+                <li class="badges-item" *ngFor="let bage  of data.badges">{{bage.name}}</li>
                                
             </ul>
          </div>
          <div class="card-footer">
             <div class="btns">
-                <span class="resp">Откликнуться</span>
-                <img class="btn like" src="/assets/images/star.png" alt="like" (click)="onClick($event)">
-                <img class="btn dis" src="/assets/images/dis.png" alt="dislike">
+                <span class="resp" (click)="onUpload()">Откликнуться</span>
+                <button class="btn" (click)="onLike()">
+                    <img *ngIf="isLiked" src="/assets/images/staract.png" alt="like" >
+                    <img  *ngIf="!isLiked"src="/assets/images/star.png" alt="like" >
+                </button>
+                <button class="btn" (click)="onDislike()">
+                    <img *ngIf="isDislike" src="/assets/images/disact.png" alt="dislike">
+                    <img  *ngIf="!isDislike"src="/assets/images/dis.png" alt="like" >
+                </button>
             </div>
-            <p class="time">{{vacancy.dateTxt}}</p>
-         </div>
-   
-</div>
 
+            <p class="time">{{data.dateTxt}}</p>
+         </div>
+</div>
+<app-error *ngIf="isUpload"></app-error>

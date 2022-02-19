@@ -6,18 +6,33 @@ import { VacancyType } from 'src/assets/data/vacancy';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent  {
+  isLiked = false;
+  isDislike = false;
+  isUpload = false;
+
   @Input()
-  vacancy: VacancyType | null = null;
+  data: VacancyType | null = null;
   constructor() { }
   
   getLink(name: string): string {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
   }
-  onClick({target}: MouseEvent):void{ 
-    if(target instanceof HTMLImageElement){
-      target.src = "/assets/images/staract.png"
-    }
+  onLike():void{ 
+    this.isLiked = !this.isLiked;
+    this.isDislike = false;
     
+    
+  }
+  onDislike():void{
+    this.isDislike = !this.isDislike;
+    this.isLiked = false;
+
+  }
+  onUpload():void{
+    this.isUpload = !this.isUpload;
+    setTimeout(()=>{
+      this.isUpload = false;
+    },2000)
   }
 
 }

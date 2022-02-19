@@ -6,6 +6,9 @@ background: #FFFFFF;
 box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
 overflow: hidden;
 }
+.card.hide{
+    opacity: 0.5;
+}
 
 .yellow{
     background-color: #ffff00;
@@ -122,5 +125,12 @@ overflow: hidden;
 }
 .btn{
     margin-right: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
     cursor: pointer;
+}
+.btn img{
+    width: 20px;
+    height: 20px;
 }
