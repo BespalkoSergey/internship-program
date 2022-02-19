@@ -8,8 +8,13 @@ import { VacancyType } from 'src/assets/data/vacansy';
 })
 export class CardComponent {
 
+  uploadCare = false;
+  isLiked = false;
+  isFavorit = false;
+
+
   @Input()
-  vacancy: VacancyType | null = null
+  data: VacancyType | null = null
 
   constructor() { }
 
@@ -17,10 +22,19 @@ export class CardComponent {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
   }
 
-  onClick({target}: MouseEvent): void{
-    if (target instanceof HTMLImageElement) {
-      target.src = "/assets/images/star_true.png"
-    }
+  onFavorite() {
+    this.isFavorit = !this.isFavorit
+    this.isLiked = false
+
+  }
+
+  public onLike(){
+    this.isLiked = !this.isLiked
+    this.isFavorit = false
+  }
+
+  public onUpload(){
+    this.uploadCare = !this.uploadCare
   }
 
 }

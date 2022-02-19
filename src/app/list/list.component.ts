@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { VACANCY } from 'src/assets/data/vacansy';
+import { Component } from '@angular/core';
+import { VACANCY, VacancyType } from 'src/assets/data/vacansy';
+import { ListService } from './list.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  providers: [ListService]
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
   vacancy = VACANCY
+  vacancies: VacancyType [] = []
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private listService: ListService) {
+    this.vacancies = this.listService.getVacancies()
+   }
 
 }
