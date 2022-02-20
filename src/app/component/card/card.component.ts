@@ -2,22 +2,32 @@ import {Component, Input} from '@angular/core';
 import {VacancyType} from "../../../assets/data/vacancy";
 
 
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent  {
+export class CardComponent {
 
   file: File | null = null
   isLiked = false
   isApply = true
   isFavorite = false
   isError=false
+  isHot=false
   url=''
+  status={
+    text:'text',
+    styled:'',
+    id:5
+    // style: {
+    //   color:'',
+    //   backgroundColor:''
+    // }
+  }
 
   data: VacancyType | null = null
+
 
   @Input() set vacancy(vacancy: VacancyType) {
     this.data = vacancy
@@ -29,9 +39,6 @@ export class CardComponent  {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
   }
 
-  isHot(hot: boolean): string {
-    return hot ? 'Hot' : 'New'
-  }
 
   dislike() {
     this.isLiked=!this.isLiked
@@ -39,8 +46,8 @@ export class CardComponent  {
 
   favorite() {
     this.isFavorite = !this.isFavorite
-  }
 
+  }
 
   yourOnUploadHandler(file: any) {
     if (!file) {
@@ -58,5 +65,6 @@ export class CardComponent  {
       }
     }).catch(()=>this.isError=true)
   }
+
 
 }

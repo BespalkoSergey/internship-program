@@ -26,11 +26,14 @@
         background-color: #FFF59D;
         color: #AA3300;
       }
-
-    }
-    .apply{
-      background-color: #D5FFE6 ;
-      color: #00702D;
+      &.apply{
+        background-color: #D5FFE6 ;
+        color: #00702D;
+      }
+      &.disl{
+        color: black;
+        background-color: #C8D1D6;
+      }
     }
 
     .name {

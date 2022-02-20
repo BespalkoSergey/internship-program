@@ -1,12 +1,26 @@
-<div *ngIf="data" class="card">
+<div *ngIf="data" class="card" [ngStyle]="{opacity: (isLiked||isApply)?'0.5':'1'}">
   <img src="../../../assets/image/image%2057.png" alt="">
 
   <div class="container">
-    <p *ngIf="!isApply; else apply" class="banner" [ngClass]="data.hot?'hot':'new'">
-      {{isHot(data.hot)}}
+
+    <!--<div class="banner"  [ngSwitch]="status.id">
+      <p  *ngSwitchCase="1" [ngClass]="status.styled">{{status.text}}</p>
+      <p  *ngSwitchCase="2" [ngClass]="status.styled">{{status.text}}</p>
+      <p  *ngSwitchCase="3" [ngClass]="status.styled">{{status.text}}</p>
+      <p  *ngSwitchCase="4" [ngClass]="status.styled">{{status.text}}</p>
+      <p  *ngSwitchCase="5" [ngClass]="status.styled">{{status.text}}</p>
+      <span *ngSwitchDefault>output2</span>
+    </div>-->
+
+    <p *ngIf="!isApply&&!isLiked; else apply"
+       class="banner"
+       [ngStyle]="{display: isFavorite?'none':'inline'}"
+       [ngClass]="data.hot?'hot':'new'">
+      {{(data.hot?'Hot':'New')}}
     </p>
     <ng-template #apply>
-      <p class="banner apply">Вы откликнулись</p>
+      <p *ngIf="isApply" class="banner apply">Вы откликнулись</p>
+      <p *ngIf="isLiked" class="banner disl">Неинтересная</p>
     </ng-template>
 
     <div class="name">
