@@ -2,9 +2,12 @@
   <img src="../../../assets/image/image%2057.png" alt="">
 
   <div class="container">
-    <p class="banner new" [ngClass]="data.hot?'hot':'new'">
+    <p *ngIf="!isApply; else apply" class="banner" [ngClass]="data.hot?'hot':'new'">
       {{isHot(data.hot)}}
     </p>
+    <ng-template #apply>
+      <p class="banner apply">Вы откликнулись</p>
+    </ng-template>
 
     <div class="name">
       <h3>{{data.name}}</h3>
@@ -33,8 +36,14 @@
     <div class="actions">
       <div class="buttons">
 
-        <label class="uploader">
-          <input type="file" #myInput (change)="uploader(myInput.files)"/>
+        <label *ngIf="!isApply" class="uploader">
+          <ngx-uploadcare-widget
+            class="upload"
+            public-key="e49195e88187634c68cd"
+            (on-upload-complete)="yourOnUploadHandler($event)"
+            (on-change)="yourOnChangeHandler($event)">
+            <!-- (on-progress)="yourOnProgressHandler($event)">-->
+          </ngx-uploadcare-widget>
           <img src="../../../assets/image/buttons/Button.png" alt="">
         </label>
         <button (click)="favorite()">
@@ -48,24 +57,29 @@
               :'assets/image/buttons/Icon-Dislike-Empty.png'"
                alt="">
         </button>
+        <p  *ngIf="isApply">
+          Отправлено резюме <a [href]="url" [ngStyle]="{color: 'red'}"><< {{data.name}}>></a>
+        </p>
         <!-- <ng-container *ngTemplateOutlet="actionsButton"></ng-container>-->
-
-
       </div>
       <div class="time">{{data.dateTxt}}</div>
     </div>
 
+    <div *ngIf="isError" class="error">
+      <img src="assets/image/Icon-Exclamation-Mark-Attention-20.png" alt="">
+      <p>Ёлки-палки, этот файл просто огромный и не помещается в наш сервер</p>
+    </div>
 
   </div>
 
-  <ng-template #actionsButton let-data>
+  <!--<ng-template #actionsButton let-data>
     <button (click)="dislike()">
       <img [src]="data.isLiked
            ? 'assets/image/buttons/Icon-Dislike-Empty.png'
            :'assets/image/buttons/Icon-Dislike-Filled.png'"
            alt="">
     </button>
-  </ng-template>
+  </ng-template>-->
 </div>
 
 

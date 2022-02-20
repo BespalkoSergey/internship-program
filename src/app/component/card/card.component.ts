@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {VacancyType} from "../../../assets/data/vacancy";
 
 
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -11,8 +12,10 @@ export class CardComponent  {
 
   file: File | null = null
   isLiked = false
-  isApply = false
+  isApply = true
   isFavorite = false
+  isError=false
+  url=''
 
   data: VacancyType | null = null
 
@@ -21,8 +24,6 @@ export class CardComponent  {
     this.isApply = vacancy.isApply
     this.isLiked=vacancy.isLiked
   }
-
-
 
   getLink(name: string): string {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
@@ -40,38 +41,22 @@ export class CardComponent  {
     this.isFavorite = !this.isFavorite
   }
 
-  uploader(e: any) {
-    console.log(e)
-    const file = e.item(0)
+
+  yourOnUploadHandler(file: any) {
+    if (!file) {
+      console.log('er')
+    }
     console.log(file)
-
-    //const client = new UploadClient({publicKey: '0e835cd0740edffd80c5'})
-    /*  const file = e.target.files[0]
-      const types = file.type.split('/')[0]
-      console.log(file)
-      if (file.size > 2000000) {
-        //dispatch(actions.error(props.id, 'Ёлки-палки, этот файл просто огромный и не помещается в наш сервер'))
-        //alert('File more than 2 MB' )
-        return
-      }
-      if (types !== 'image') {
-       // dispatch(actions.error(props.id, 'Error file,select an image'))
-        // alert('Error file,select an image')
-        return;
-      }
-      //dispatch(actions.addFile(props.id, `https://ucarecdn.com/${file.uuid}/`))
-
-      client
-        .uploadFile(file)
-        .then(file => {
-            alert('Your file uploaded successfully')
-            dispatch(actions.respond(props.id))
-            dispatch(actions.error(props.id, ''))
-            dispatch(actions.addFile(props.id, `https://ucarecdn.com/${file.uuid}/`))
-            alert(`https://ucarecdn.com/${file.uuid}/`)
-          }
-        )
-        .catch(err => alert(err))
-      dispatch(actions.addFile(props.id, `https://ucarecdn.com/${file.uuid}/`))*/
+    this.isApply=true
+    this.url=file.originalUrl
   }
+
+  yourOnChangeHandler(file: any) {
+    file.promise().then((res:any)=>{
+      if(res.size>2000000){
+        this.isError=true
+      }
+    }).catch(()=>this.isError=true)
+  }
+
 }

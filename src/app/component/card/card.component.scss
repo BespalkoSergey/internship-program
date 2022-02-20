@@ -26,6 +26,11 @@
         background-color: #FFF59D;
         color: #AA3300;
       }
+
+    }
+    .apply{
+      background-color: #D5FFE6 ;
+      color: #00702D;
     }
 
     .name {
@@ -82,7 +87,7 @@
       align-items: center;
       height: 40px;
       padding: 5px 0;
-      margin: 10px 0;
+      margin-top: 10px;
       .buttons{
         display: flex;
         align-items: center;
@@ -90,6 +95,9 @@
         .uploader{
           cursor: pointer;
           margin-right: 20px;
+          .upload{
+            display: none;
+          }
         }
         input{
           display: none;
@@ -107,6 +115,13 @@
         opacity: .5;
       }
 
+    }
+    .error{
+      background-color: #FFD8D8;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 10px;
     }
 
   }
