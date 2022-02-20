@@ -7,7 +7,7 @@ export const VACANCY = {
   "publicationType": 1,
   "date": "2022-01-24T10:01:00.66",
   "dateTxt": "1 день назад",
-  "hot": true,
+  "hot": false,
   "salary": 0,
   "salaryFrom": 10000,
   "salaryTo": 15000,
@@ -48,4 +48,5 @@ export const VACANCY = {
     }
   ]
 }
+
 export type VacancyType = typeof VACANCY & { badges: Array<{ id: number, name: string }> }
