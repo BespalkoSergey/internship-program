@@ -119,3 +119,7 @@ button {
     color: #687E88;
     font-size: 14px;
 }
+
+.disliked {
+    opacity: 0.4;
+}
