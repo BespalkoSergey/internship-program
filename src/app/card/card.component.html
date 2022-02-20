@@ -1,16 +1,16 @@
 <li *ngIf="vacancy" class="card">
-    <div class="veil" *ngIf="isApply || isDislike"></div>
+    <div class="veil" @myInsertRemoveTrigger *ngIf="isApply || isDislike"></div>
     <img class="banner" src="/assets/images/image 57.png" alt="banner">
-    <div [style.padding.px]="20">
+    <div class="info">
         <div *ngIf="isApply; else elseStatus">
-            <p class="status apply">Вы откликнулись</p>
+            <p @buttonCheckTrigger class="status apply">Вы откликнулись</p>
         </div>
             <ng-template #elseStatus>
                 <div *ngIf="isDislike; else newCard">
-                    <p class="status dislike">Неинтересная</p>
+                    <p @buttonCheckTrigger class="status dislike">Неинтересная</p>
                 </div>
                 <ng-template #newCard>
-                    <p class="status new" *ngIf="vacancy.hot">Новая</p>
+                    <p @buttonCheckTrigger class="status new" *ngIf="vacancy.hot">Новая</p>
                 </ng-template>
             </ng-template>
 
@@ -33,21 +33,21 @@
         <div class="container">
             <p class="time">{{vacancy.dateTxt}}</p>
             <div class="buttons">
-                <button class="button apply" type="button" (click)="getApply()" *ngIf="!isApply">
+                    <button class="button apply" type="button" (click)="getApply()" @buttonCheckTrigger *ngIf="!isApply">
                     <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
                     <span [style.marginLeft.px]="10"></span>Откликнуться</button>
                 
                 <div>
-                    <button [style.padding.px]="10" class="button" type="button" (click)="getFavourite()">
-                        <img [style.width.px]="20" *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
+                    <button [style.marginRight.px]="10" class="button button-status" type="button" (click)="getFavourite()">
+                        <img class="button-icon" @buttonCheckTrigger *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
                             <ng-template #favouriteChecked>
-                                <img [style.width.px]="20" src="/assets/images/svg/Icon-Favorite-checked.svg" alt="icon-favourite-checked">
+                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Favorite-checked.svg" alt="icon-favourite-checked">
                             </ng-template>
                     </button>
-                    <button [style.padding.px]="10" class="button" type="button" (click)="getDislike()">
-                        <img [style.width.px]="20" *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
+                    <button class="button button-status" type="button" (click)="getDislike()">
+                        <img class="button-icon" @buttonCheckTrigger *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
                             <ng-template #dislikeChecked>
-                                <img [style.width.px]="20" src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked">
+                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked">
                             </ng-template>
                     </button>
                 </div>
