@@ -32,8 +32,6 @@ export class CardComponent  {
 
   file: File | null = null
 
-
-
   getLink(name: string): string {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
   }
@@ -44,15 +42,10 @@ export class CardComponent  {
 
   dislike() {
     this.isLiked=!this.isLiked
-
   }
 
   favorite() {
-    console.log(this.srcFavorite)
-    this.srcFavorite
-    //debugger
     this.isFavorite = !this.isFavorite
-    console.log(this.srcFavorite)
   }
 
   uploader(e: any) {
