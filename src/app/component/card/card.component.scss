@@ -1,9 +1,8 @@
 .card {
-  height: 370px;
   width: 750px;
   border-radius: 5px;
   background: #FFFFFF;
-  box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+  box-shadow: 0 10px 10px rgba(5, 5, 6, 0.05);
   overflow: hidden;
 
   .container {
@@ -15,6 +14,8 @@
       padding: 2px 10px;
       line-height: 20px;
       height: 20px;
+      margin-bottom: 10px;
+      border-radius: 5px;
 
       &.new {
         background-color: #FFE9E9;
@@ -31,8 +32,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 60px;
-
+      margin-bottom: 10px;
       .logo {
         img {
           width: 120px;
@@ -42,20 +42,18 @@
     }
 
     .salary {
-      height: 20px;
-      margin: 5px 0;
+      margin-bottom: 10px;
       span {
-        opacity: 0.5;
+        color: #687E88;
       }
     }
 
     .company{
-      margin: 10px 0;
+      margin-bottom: 10px;
       height: 20px;
+      padding-top: 5px;
       p{
-        font-size: 16px;
-        font-style: normal;
-        font-weight: normal;
+        padding: 0;
         display: inline;
         color: #FF5252;
         margin-right: 10px;
@@ -64,18 +62,17 @@
 
     .badges{
       display: flex;
-      margin: 10px 0;
-      //height: 20px;
+      gap: 10px;
       align-items: center;
-      //overflow-x: auto;
-      //overflow-y: hidden;
-      //white-space: nowrap;
+
+      /*overflow-x: scroll;
+      overflow-y: hidden;*/
+      white-space: nowrap;
+      flex-wrap: wrap;
       .badgeItem{
         border: 1px solid #C8D1D6;
-        margin-right: 10px;
         padding: 5px 10px;
         border-radius:5px ;
-        box-sizing: border-box;
       }
     }
 

@@ -1,0 +1,71 @@
+<div *ngIf="data" class="card">
+  <img src="../../../assets/image/image%2057.png" alt="">
+
+  <div class="container">
+    <p class="banner new" [ngClass]="data.hot?'hot':'new'">
+      {{isHot(data.hot)}}
+    </p>
+
+    <div class="name">
+      <h3>{{data.name}}</h3>
+      <div class="logo">
+        <img [src]="getLink(data.logo)" alt="logo">
+      </div>
+    </div>
+
+    <div *ngIf="!!data.salaryFrom || !!data.salaryTo" class="salary">
+      {{data.salaryFrom}}{{-data.salaryTo}}
+      <span>{{data.salaryComment}}</span>
+    </div>
+
+
+    <div class="company">
+      <p>{{data.companyName|uppercase}}</p>
+      {{data.cityName}}
+    </div>
+
+    <div class="badges">
+      <div class="badgeItem" *ngFor="let badge of data.badges">
+        {{badge.name}}
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="buttons">
+
+        <label class="uploader">
+          <input type="file" #myInput (change)="uploader(myInput.files)"/>
+          <img src="../../../assets/image/buttons/Button.png" alt="">
+        </label>
+        <button (click)="favorite()">
+          <img [src]="isFavorite
+                ?'assets/image/buttons/Icon-Favorite-Star-Filled.png'
+                :'assets/image/buttons/Icon-Favorite-Star-Empty.png'" alt="">
+        </button>
+        <button (click)="dislike()">
+          <img [src]="isLiked
+              ?'assets/image/buttons/Icon-Dislike-Filled.png'
+              :'assets/image/buttons/Icon-Dislike-Empty.png'"
+               alt="">
+        </button>
+        <!-- <ng-container *ngTemplateOutlet="actionsButton"></ng-container>-->
+
+
+      </div>
+      <div class="time">{{data.dateTxt}}</div>
+    </div>
+
+
+  </div>
+
+  <ng-template #actionsButton let-data>
+    <button (click)="dislike()">
+      <img [src]="data.isLiked
+           ? 'assets/image/buttons/Icon-Dislike-Empty.png'
+           :'assets/image/buttons/Icon-Dislike-Filled.png'"
+           alt="">
+    </button>
+  </ng-template>
+</div>
+
+

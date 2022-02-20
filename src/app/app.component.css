@@ -1,0 +1,13 @@
+.container{
+  position: relative;
+}
+
+.header{
+  position: sticky;
+  top: 0;
+  background-color: #FF5252;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+}
