@@ -9,18 +9,10 @@ import {VacancyType} from "../../../assets/data/vacancy";
 })
 export class CardComponent  {
 
-  isUploadFailed = true
+  file: File | null = null
   isLiked = false
   isApply = false
   isFavorite = false
-
-  srcLiked=this.isLiked
-    ?'assets/image/buttons/Icon-Dislike-Filled.png'
-    :'assets/image/buttons/Icon-Dislike-Empty.png'
-
-  srcFavorite=this.isFavorite
-    ?'assets/image/buttons/Icon-Favorite-Star-Filled.png'
-    :'assets/image/buttons/Icon-Favorite-Star-Empty.png'
 
   data: VacancyType | null = null
 
@@ -30,7 +22,7 @@ export class CardComponent  {
     this.isLiked=vacancy.isLiked
   }
 
-  file: File | null = null
+
 
   getLink(name: string): string {
     return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
