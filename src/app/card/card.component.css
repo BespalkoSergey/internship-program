@@ -180,6 +180,10 @@
   transform: translate(-50%, -50%);
 }
 
+.upload-widget {
+  display: none;
+}
+
 .button.apply {
   display: flex;
   justify-content: center;
@@ -194,4 +198,12 @@
   .button.apply {
     margin-right: 20px;
   }
+}
+
+.summary {
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 1.25;
+  text-decoration: none;
+  color: red;
 }

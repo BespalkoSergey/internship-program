@@ -33,11 +33,14 @@
         <div class="container">
             <p class="time">{{vacancy.dateTxt}}</p>
             <div class="buttons">
-                    <button class="button apply" type="button" (click)="getApply()" @buttonCheckTrigger *ngIf="!isApply">
-                    <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
-                    <span [style.marginLeft.px]="10"></span>Откликнуться</button>
-                
+                <button class="button apply" (click)="getApply()" type="button" @buttonCheckTrigger *ngIf="!isApply">
+                        <ngx-uploadcare-widget #widget imagesOnly public-key="c245798d109564ae6291" class="upload-widget" (on-upload-complete)="onUpload($event)">
+                        </ngx-uploadcare-widget>
+                        <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
+                        <span [style.marginLeft.px]="10"></span>Откликнуться
+                </button>
                 <div>
+                    
                     <button [style.marginRight.px]="10" class="button button-status" type="button" (click)="getFavourite()">
                         <img class="button-icon" @buttonCheckTrigger *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
                             <ng-template #favouriteChecked>
@@ -47,11 +50,13 @@
                     <button class="button button-status" type="button" (click)="getDislike()">
                         <img class="button-icon" @buttonCheckTrigger *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
                             <ng-template #dislikeChecked>
-                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked">
+                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked" target="_blank" rel="noreferrer nofollow">
                             </ng-template>
                     </button>
                 </div>
+                    <a class="summary" @buttonCheckTrigger [href]="url" *ngIf="isApply">Отправлено резюме</a>
             </div>
         </div>
     </div>
+        <app-error-message *ngIf="isError"></app-error-message>
 </li>

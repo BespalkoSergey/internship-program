@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
-
-
+import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { VacancyType } from '../../assets/data/vacancy';
 
 @Component({
@@ -33,17 +32,32 @@ export class CardComponent {
   isApply = false;
   isFavourite = false;
   isDislike = false;
-  
+  isError=false;
+  url=''
+  limit=2097152;
   
   @Input()
   vacancy: VacancyType | null=null
   
-  getLink(name: string): string {
-    return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
+  @ViewChild(UcWidgetComponent)
+  private widget: UcWidgetComponent
+
+  onUpload(info: any) {
+    if (info.size < this.limit) {
+      this.isApply=true
+      this.url=info.cdnUrl 
+    } else {
+      this.widget.clearable
+      this.isError=!this.isError
+    }
+  }
+  
+  getApply() {
+    this.widget.openDialog();
   }
 
-  getApply() {
-    this.isApply=!this.isApply
+  getLink(name: string): string {
+    return `https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/${name}`
   }
 
   getFavourite() {
