@@ -1,5 +1,5 @@
 <div *ngIf="data" class="card">
-    <img src="/assets/images/banner.png" alt="banner">
+    <img *ngIf="data.designBannerUrl" [src]="data.designBannerUrl" alt="banner">
     <div [style.padding.px]="20">
         <div [ngClass]="{disliked: isLiked}">
             <p class="banner new">
@@ -52,9 +52,7 @@
 
     </div>
 
-    <app-error *ngIf="uploadCare">
-
-    </app-error>
+    <app-error *ngIf="uploadCare"></app-error>
 
 
 </div>

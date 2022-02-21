@@ -1,13 +1,43 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { VACANCIES } from 'src/assets/data/vacancies';
+import { map, Observable, tap } from 'rxjs';
+import { VacancyType } from 'src/assets/data/vacansy';
+
+type ResponseData = {
+  documents: Array<VacancyType>;
+};
 
 @Injectable()
 export class ListService {
 
-  constructor() { }
+  private apiUrl = 'https://api.rabota.ua/vacancy/search'
 
-  getVacancies() {
-    return VACANCIES
+  private fetchParams = {
+    keyWords: ''
+  }
+
+  constructor(private http: HttpClient) {}
+  
+
+  public getVacancies(): any {
+    return this.fetchVacancies(this.getParams())
+  }
+
+  public setKeywords(value: string) {
+    this.fetchParams.keyWords = value
+  }
+
+  private getParams(): any {
+    return this.fetchParams.keyWords
+    ? { keyWords: this.fetchParams.keyWords }
+    : {};
+  }
+
+  private fetchVacancies(params = {}): Observable<VacancyType[]> {
+
+  return  this.http
+  .get<ResponseData>(this.apiUrl,{ params } )
+  .pipe(map((data) => data?.documents))
   }
 
 }

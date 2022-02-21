@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 import { ErrorComponent } from './error/error.component';
+import { HttpClientModule }   from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,13 @@ import { ErrorComponent } from './error/error.component';
     HeaderComponent,
     ListComponent,
     CardComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
