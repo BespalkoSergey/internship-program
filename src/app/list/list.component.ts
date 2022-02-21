@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { VACANCY, VacancyType } from 'src/assets/data/vacancy';
 import { ListService } from './list.service';
 
@@ -10,12 +12,19 @@ import { ListService } from './list.service';
 })
 export class ListComponent  {
   data = VACANCY
-  vacancies: VacancyType[] = []
-
+  vacancies: Observable<VacancyType[]>
+  searchInput = new FormControl('')
   constructor(private ListService: ListService) {
-    this.vacancies = this.ListService.getVacancies() 
+    this.vacancies = this.ListService.getVacancies()
+    this.searchInput.valueChanges.subscribe((data)=>{
+      console.log(data);
+      ListService.setKeywords(data)
+      
+    }) 
    }
-
+public search() :any{
+  this.vacancies = this.ListService.getVacancies()
+}
   
 
 }

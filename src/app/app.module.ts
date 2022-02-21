@@ -7,6 +7,8 @@ import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 import { DoublePipe } from './double.pipe';
 import { ErrorComponent } from './error/error.component';
+import { HttpClientModule }   from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { ErrorComponent } from './error/error.component';
     ErrorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

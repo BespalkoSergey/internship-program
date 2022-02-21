@@ -1,6 +1,11 @@
 
 <div *ngIf="data" class="card" [ngClass]="{hide:isDislike}">
-    <img src="/assets/images/baner.png" alt="baner">
+        
+        <img  *ngIf="!data.designBannerUrl ; else banerImg" src="{{data.designBannerUrl}}">
+        <ng-template #banerImg> 
+            <img  src="{{data.designBannerUrl}}" alt="baner">
+        </ng-template>
+ 
     <div [style.padding.px]="20">
         <p class="baner new" >
             {{ data.hot? 'Горящая': 'Новая'}}
