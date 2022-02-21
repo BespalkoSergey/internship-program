@@ -1,0 +1,62 @@
+<li *ngIf="vacancy" class="card">
+    <div class="veil" @myInsertRemoveTrigger *ngIf="isApply || isDislike"></div>
+    <img class="banner" src="/assets/images/image 57.png" alt="banner">
+    <div class="info">
+        <div *ngIf="isApply; else elseStatus">
+            <p @buttonCheckTrigger class="status apply">Вы откликнулись</p>
+        </div>
+            <ng-template #elseStatus>
+                <div *ngIf="isDislike; else newCard">
+                    <p @buttonCheckTrigger class="status dislike">Неинтересная</p>
+                </div>
+                <ng-template #newCard>
+                    <p @buttonCheckTrigger class="status new" *ngIf="vacancy.hot">Новая</p>
+                </ng-template>
+            </ng-template>
+
+        <div class="employer-container">
+            <h3>{{vacancy.name}}</h3>
+            <div class="logo" >
+                <img class="logoimg" [src]="getLink(vacancy.logo)" alt="logo">
+            </div>
+        </div>
+        <p class="salary-container">
+            <span *ngIf="!!vacancy.salaryFrom && !!vacancy.salaryTo">{{vacancy.salaryFrom}} – {{vacancy.salaryTo}} &#8372; </span>
+            <span [style.color]="'#687e88'" >{{vacancy.salaryComment}}</span>
+        </p>
+        <p class="employer-info"><span class="employer-name">{{vacancy.companyName}}</span><span>{{vacancy.cityName}}</span></p>
+        <div class="benefit-container">
+            <ul class="benefits-list">
+                <li class="benefit-item" *ngFor="let badge of vacancy.badges">{{badge?.name}}</li>
+            </ul> 
+        </div>
+        <div class="container">
+            <p class="time">{{vacancy.dateTxt}}</p>
+            <div class="buttons">
+                <button class="button apply" (click)="getApply()" type="button" @buttonCheckTrigger *ngIf="!isApply">
+                        <ngx-uploadcare-widget #widget imagesOnly public-key="c245798d109564ae6291" class="upload-widget" (on-upload-complete)="onUpload($event)">
+                        </ngx-uploadcare-widget>
+                        <img src="/assets/images/svg/Icon-Apply.svg" alt="icon-apply">
+                        <span [style.marginLeft.px]="10"></span>Откликнуться
+                </button>
+                <div>
+                    
+                    <button [style.marginRight.px]="10" class="button button-status" type="button" (click)="getFavourite()">
+                        <img class="button-icon" @buttonCheckTrigger *ngIf="!isFavourite; else favouriteChecked" src="/assets/images/svg/Icon-Favorite.svg" alt="icon-favourite">
+                            <ng-template #favouriteChecked>
+                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Favorite-checked.svg" alt="icon-favourite-checked">
+                            </ng-template>
+                    </button>
+                    <button class="button button-status" type="button" (click)="getDislike()">
+                        <img class="button-icon" @buttonCheckTrigger *ngIf="!isDislike; else dislikeChecked" src="/assets/images/svg/Icon-Dislike.svg" alt="icon-dislike">
+                            <ng-template #dislikeChecked>
+                                <img class="button-icon" @buttonCheckTrigger src="/assets/images/svg/Icon-Dislike-checked.svg" alt="icon-dislike-checked" target="_blank" rel="noreferrer nofollow">
+                            </ng-template>
+                    </button>
+                </div>
+                    <a class="summary" @buttonCheckTrigger [href]="url" *ngIf="isApply">Отправлено резюме</a>
+            </div>
+        </div>
+    </div>
+        <app-error-message *ngIf="isError"></app-error-message>
+</li>

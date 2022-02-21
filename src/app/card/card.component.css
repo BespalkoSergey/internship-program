@@ -1,0 +1,209 @@
+.card {
+  position: relative;
+  width: 340px;
+  min-height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 1300px) {
+  .card {
+    width: 750px;
+  }
+}
+
+.veil {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: white;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 100;
+}
+
+.banner {
+  display: block;
+  max-width: 100%;
+  height: 50px;
+}
+@media screen and (min-width: 1300px) {
+  .banner {
+    height: 100px;
+  }
+}
+
+.info {
+  position: relative;
+  padding: 20px;
+}
+
+.status {
+  position: absolute;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 1.43;
+  border-radius: 5px;
+}
+
+.status.dislike {
+  background: #c8d1d6;
+  color: #303a3e;
+}
+
+.status.apply {
+  background: #d5ffe6;
+  color: #00702d;
+}
+
+.status.new {
+  background-color: #ffe9e9;
+  color: #bc0002;
+}
+
+.employer-container {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 120px;
+  height: 60px;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+.logoimg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.salary-container {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #212527;
+}
+
+.employer-info {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #212527;
+}
+.employer-name {
+  margin-right: 20px;
+  color: #ff5252;
+}
+
+.benefit-container {
+  overflow-x: auto;
+}
+.benefit-container::-webkit-scrollbar {
+  display: none;
+}
+
+.benefits-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+@media screen and (min-width: 1300px) {
+  .benefits-list {
+    flex-wrap: wrap;
+  }
+}
+
+.benefit-item {
+  border: 1px solid #c8d1d6;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #212527;
+}
+
+@media screen and (min-width: 1300px) {
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.time {
+  font-size: 14px;
+  line-height: 1.43;
+  color: #687e88;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+}
+
+.button {
+  padding: 10px 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-status {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+}
+
+.button-icon {
+  position: absolute;
+  width: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upload-widget {
+  display: none;
+}
+
+.button.apply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.25;
+  color: #ff5252;
+}
+
+@media screen and (min-width: 1300px) {
+  .button.apply {
+    margin-right: 20px;
+  }
+}
+
+.summary {
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 1.25;
+  text-decoration: none;
+  color: red;
+}
