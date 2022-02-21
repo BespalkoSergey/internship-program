@@ -1,3 +1,5 @@
-<div class="list">
-    <app-card *ngFor="let vacancy of vacancies" [vacancy]="vacancy"></app-card>
+<div class="list" *ngIf="vacancies | async as list">
+    <input type="text" [formControl]="searchInput">
+    <button (click)="search()">search</button>
+  <app-card *ngFor="let vacancy of list" [vacancy]="vacancy"></app-card>
 </div>
