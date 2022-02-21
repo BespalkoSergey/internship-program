@@ -1,4 +1,4 @@
-<div *ngIf="data" [ngClass]="isApply || isLiked ? 'blured' : ''" class="card">
+<div *ngIf="data" class="card" [ngClass]="{'blured': isApply || isLiked}" >
     <!-- Верхня картинка -->
     <img src="/assets/images/banner.png" alt="banner">
     <div [style.padding.px]='20'>
@@ -42,7 +42,7 @@
             <span [style.marginLeft.px]="20">{{ data.cityName }}</span>
         </p>
         <!-- Рендер плюшок вакансії -->
-        <div class="badges" [ngClass]="{'fatDiv': data.badges.length === 0}">
+        <div class="badges" [ngClass]="{'fat-div': data.badges.length === 0}">
             <div *ngFor="let badge of data.badges" class="badge">
                 {{ badge.name }}
             </div>
@@ -58,14 +58,14 @@
             </button>
 
         <!-- Іконка зірочки, улюблена вакансія -->
-        <button>
+       
             <app-favorite-icon [ngStyle]="{'marginRight': '20px'}" [isFilled]="isFavorite" (click)="setFavorite()"></app-favorite-icon>
-        </button>
+        
         
         <!-- Кнопка дізлайку -->
-        <button>
+       
             <app-dislike-icon [isFilled]="isLiked" (click)="setLiked()"></app-dislike-icon>
-        </button>
+       
         <!-- Як давно розмистили вакансію -->
         <p class="time">{{ data.dateTxt }}</p>
     </div>
