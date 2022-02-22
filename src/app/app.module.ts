@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { CardComponent } from './card/card.component';
 import { ErrorComponent } from './error/error.component';
 import { DislikeComponent } from './icon-svg/dislike/dislike.component';
 import { FavoriteComponent } from './icon-svg/favorite/favorite.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -24,7 +26,10 @@ import { FavoriteComponent } from './icon-svg/favorite/favorite.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    UcWidgetModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

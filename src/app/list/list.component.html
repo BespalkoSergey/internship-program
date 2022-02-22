@@ -1,3 +1,14 @@
-<div class="list">
-  <app-card *ngFor="let item of vacancies" [vacancy]="item"></app-card>
+<div class="list" *ngIf="vacancies | async as list">
+  <div [style.display]="'flex'" [style.gap.px]="20">
+    <input type="text" [formControl]="searchInput" /><label for="sort"
+      >Sort by:
+      <select name="sort" [formControl]="sortInput">
+        <option value="date">Date</option>
+        <option value="geo">Geo</option>
+      </select>
+    </label>
+    <button (click)="search()">Search</button>
+  </div>
+
+  <app-card *ngFor="let vacancy of list" [vacancy]="vacancy"></app-card>
 </div>
