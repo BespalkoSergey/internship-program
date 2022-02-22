@@ -13,7 +13,8 @@ export class ListService {
   private apiUrl = 'https://api.rabota.ua/vacancy/search'
 
   private fetchParams = {
-    keyWords: ''
+    keyWords: '',
+    cityId: ''
   }
 
   constructor(private http: HttpClient) {}
@@ -27,17 +28,22 @@ export class ListService {
     this.fetchParams.keyWords = value
   }
 
+  public setCity(value: string) {
+    this.fetchParams.cityId = value
+    
+  }
+
   private getParams(): any {
-    return this.fetchParams.keyWords
-    ? { keyWords: this.fetchParams.keyWords }
+    return this.fetchParams
+    ? { keyWords: this.fetchParams.keyWords, cityId: this.fetchParams.cityId }
     : {};
   }
 
   private fetchVacancies(params = {}): Observable<VacancyType[]> {
-
+    
   return  this.http
   .get<ResponseData>(this.apiUrl,{ params } )
   .pipe(map((data) => data?.documents))
   }
-
+  
 }

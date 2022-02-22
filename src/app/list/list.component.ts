@@ -17,10 +17,16 @@ export class ListComponent {
 
   public searchInput = new FormControl('');
 
+  public cityFilter = new FormControl('');
+
   constructor(private listService: ListService) {
     this.vacancies = this.listService.getVacancies()
     this.searchInput.valueChanges.subscribe((data) => {
       listService.setKeywords(data)
+    })
+
+    this.cityFilter.valueChanges.subscribe((data) =>{
+      listService.setCity(data)
     })
    }
    
