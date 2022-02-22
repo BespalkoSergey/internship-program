@@ -1,0 +1,71 @@
+<div *ngIf="data" class="card" [ngClass]="{ opacity: isLiked || isAplly }">
+  <img src="/assets/images/banner.png" alt="banner" />
+
+  <div [style.padding.px]="20">
+    <container-element [ngSwitch]="!isLiked || !isAplly">
+      <p class="banner dislike" *ngSwitchCase="isLiked">Неинтересная</p>
+      <p class="banner submitted" *ngSwitchCase="isAplly">Вы откликнулись</p>
+      <p
+        class="banner"
+        *ngSwitchDefault
+        [ngClass]="{ hot: data.hot, new: !data.hot }"
+      >
+        {{ data.hot ? "Горячая" : "Новая" }}
+      </p>
+    </container-element>
+
+    <div class="vacancy">
+      <h3>{{ data.name }}</h3>
+      <div class="logo">
+        <img
+          [src]="
+            'https://company-logo-frankfurt.rabota.ua/cdn-cgi/image/w=250/' +
+            data.logo
+          "
+          alt="logo"
+        />
+      </div>
+    </div>
+
+    <div class="salary">
+      {{ data.salaryFrom }} - {{ data.salaryTo }} ₴
+      <span>{{ data.salaryComment }}</span>
+    </div>
+
+    <div class="company">
+      <span>{{ data.companyName }}</span> <span>{{ data.cityName }}</span>
+    </div>
+
+    <div class="badges">
+      <div *ngFor="let bage of data.badges">
+        {{ bage.name }}
+      </div>
+    </div>
+
+    <div class="footerCard">
+      <div class="action">
+        <label *ngIf="!fileName" class="apply">
+          <input
+            type="file"
+            accept=".doc, .docx, .txt, .rtf, .odt, .pdf"
+            (input)="applyVacancy($event)"
+          />
+          <img src="/assets/images/Apply.svg" alt="Apply" />
+          <span class="text">Откликнуться</span>
+        </label>
+        <button (click)="setFavorite()">
+          <app-favorite [isFilled]="isFavorite"></app-favorite>
+        </button>
+        <button (click)="setLiked()">
+          <app-dislike [isFilled]="isLiked"></app-dislike>
+        </button>
+        <div *ngIf="fileName" class="publication">
+          Отправлено резюме
+          <a href="#">«{{ fileName }}»</a>
+        </div>
+      </div>
+      <div class="time">{{ data.dateTxt }}</div>
+    </div>
+  </div>
+  <app-error *ngIf="isErrorFile"></app-error>
+</div>
