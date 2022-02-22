@@ -1,0 +1,58 @@
+<div *ngIf="data" class="card">
+    <img *ngIf="data.designBannerUrl" [src]="data.designBannerUrl" alt="banner">
+    <div [style.padding.px]="20">
+        <div [ngClass]="{disliked: isLiked}">
+            <p class="banner new">
+                {{ data.hot? 'Горячая' : 'Новая' }}
+            </p>
+            <div class="vacancy-desc">
+                <div>
+                    <h3>{{ data.name }}</h3>
+                    <p *ngIf="!!data.salaryFrom && !!data.salaryTo" class="salary">
+                        {{ data.salaryFrom }} - {{ data.salaryTo }} $
+                    </p>
+                    <p><span class="company-name">{{data.companyName}}</span>
+                        <span class="city-name">{{data.cityName}}</span>
+                    </p>
+                </div>
+                <div>
+                    <img class="logo" [src]="getLink(data.logo)" alt="logo">
+                </div>
+            </div>
+
+            <div class="badges">
+                <ul class="badges-list">
+                    <li *ngFor="let badge of data.badges">{{badge.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-buttons">
+            <div class="respond-button">
+
+                <button class="respond-btn" (click)="onUpload()">
+                    <img class="apply-icon" src="/assets/images/Icon-Apply.png" [style.padding-right.px]="10">
+                    <p>Откликнуться</p>
+                </button>
+
+                <button [style.margin-right.px]="30" (click)="onFavorite()">
+                    <img *ngIf="!isFavorit" class="like" src="/assets/images/star.png">
+                    <img *ngIf="isFavorit" src="/assets/images/star_true.png" alt="">
+                </button>
+
+                <button (click)="onLike()">
+                    <img *ngIf="!isLiked" class="dislike" src="/assets/images/dislike.png">
+                    <img *ngIf="isLiked" class="dislike" src="/assets/images/dislike_true.png">
+                </button>
+
+            </div>
+            <div>
+                <p class="publication-time">{{data.dateTxt}}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <app-error *ngIf="uploadCare"></app-error>
+
+
+</div>
