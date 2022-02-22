@@ -15,7 +15,8 @@ export class ListService {
   private apiUrl = 'https://api.rabota.ua/vacancy/search'
 
   private fetchPamams = {
-    keyWords:''
+    keyWords:'',
+    cityId:''
   }
 
   constructor(private http: HttpClient) { 
@@ -28,14 +29,20 @@ export class ListService {
   public setKeywords(value: string){
       this.fetchPamams.keyWords = value
   }
-
+  public setCityId(value: string){
+    this.fetchPamams.cityId = value
+}
   private getParams(): any {
-    return this.fetchPamams.keyWords
-    ?{ keyWords: this.fetchPamams.keyWords}
+    console.log(this.fetchPamams);
+    
+    return this.fetchPamams
+    ?{ keyWords: this.fetchPamams.keyWords, cityId: this.fetchPamams.cityId}
     : {};
   }
 
 private fetchVacancies(params = {}):Observable<VacancyType[]>{
+  console.log(params);
+  
   return this.http
     .get<ResponseData>(this.apiUrl, {params})
     .pipe(map((data) => data?.documents  ))

@@ -14,6 +14,8 @@ export class ListComponent  {
   data = VACANCY
   vacancies: Observable<VacancyType[]>
   searchInput = new FormControl('')
+  cityInput = new FormControl('')
+
   constructor(private ListService: ListService) {
     this.vacancies = this.ListService.getVacancies()
     this.searchInput.valueChanges.subscribe((data)=>{
@@ -21,9 +23,15 @@ export class ListComponent  {
       ListService.setKeywords(data)
       
     }) 
+    this.cityInput.valueChanges.subscribe((data)=>{
+      console.log(data);
+      ListService.setCityId(data)
+      
+    }) 
    }
 public search() :any{
   this.vacancies = this.ListService.getVacancies()
+  
 }
   
 

@@ -1,5 +1,11 @@
 <div class="list" *ngIf="vacancies | async as list">
-    <input type="text" [formControl]="searchInput">
+    <input type="text" [formControl]="searchInput" placeholder="Вакансия">
+    <select type="text" [formControl]="cityInput" >
+        <option value="1" >Киев</option>
+        <option value="2">Львов</option>
+        <option value="3">Одесса</option>
+
+    </select>
     <button (click)="search()"> serch</button>
     <app-card *ngFor="let item of list" [data]='item'></app-card>
 </div>
