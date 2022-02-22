@@ -1,0 +1,17 @@
+<div [ngStyle]="{display: 'flex',gap:'10px'}">
+  <label >Search
+    <input type="text" [formControl]="searchInput" >
+  </label>
+
+  <label >Count
+    <input  type="number" [formControl]="myCount">
+  </label>
+  <label >Page
+    <input  type="number" [formControl]="myPage">
+  </label>
+  <label >Salary
+    <input type="checkbox" [formControl]="check">
+    <input  type="number" [formControl]="salary">
+  </label>
+
+</div>

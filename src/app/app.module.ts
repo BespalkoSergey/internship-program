@@ -8,13 +8,18 @@ import { CardComponent } from './component/card/card.component';
 import { HeaderComponent } from './component/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {NgxPaginationModule} from "ngx-pagination";
+import { SearcherComponent } from './searcher/searcher.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     CardComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearcherComponent,
 
   ],
   imports: [
@@ -22,7 +27,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     FormsModule,
     UcWidgetModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
