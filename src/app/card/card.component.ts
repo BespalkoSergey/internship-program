@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { VacancyType } from '../../assets/data/vacancy'
-import {HttpClient} from '@angular/common/http'
+
 
 @Component({
   selector: 'app-card',
@@ -24,7 +24,7 @@ export class CardComponent {
   }
   
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   public setFavorite() {
     this.isFavorite = !this.isFavorite
@@ -35,15 +35,9 @@ export class CardComponent {
     this.isLiked = !this.isLiked
     this.isFavorite = false
   }
- public applyVacancy(event:any ){
-
-  const file:File = event.target.files[0];
-   if (file.size < 2000000) {
-    this.fileName = file.name;
-  
-    // const formData = new FormData();
-    // formData.append("resume", file);
-    // const upload$ = this.http.post("/url", formData); 
+ public applyVacancy(event:File ){
+   if (event.size < 2000000) {
+    this.fileName = event.name;
     this.isAplly = true
     this.isErrorFile = false
 } else this.isErrorFile = true

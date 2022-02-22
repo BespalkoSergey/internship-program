@@ -21,3 +21,32 @@ body {
   background-color: #e5e5e5;
   font-family: "Graphik";
 }
+
+.uploadcare--widget__button_type_open {
+  display: none;
+}
+.uploadcare--widget__button {
+  display: none;
+}
+.uploadcare--widget__file-size {
+  display: none;
+}
+.uploadcare--widget__text {
+  position: absolute;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 0.2em;
+  padding: 0.4em 0;
+  white-space: nowrap;
+}
+.uploadcare--link,
+.uploadcare--link:link,
+.uploadcare--link:visited {
+  display: none;
+}
+#uploadcare--widget__text {
+  display: none;
+}
+#uploadcare--widget__progress {
+  padding-left: 10px;
+}

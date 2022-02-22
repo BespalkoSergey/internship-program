@@ -1,8 +1,14 @@
 <div *ngIf="data" class="card" [ngClass]="{ opacity: isLiked || isAplly }">
-  <img src="/assets/images/banner.png" alt="banner" />
+  <div class="banner-square">
+    <img
+      *ngIf="data.designBannerUrl"
+      src="{{ data.designBannerUrl }}"
+      alt="banner"
+    />
+  </div>
 
   <div [style.padding.px]="20">
-    <container-element [ngSwitch]="!isLiked || !isAplly">
+    <ng-container [ngSwitch]="!isLiked || !isAplly">
       <p class="banner dislike" *ngSwitchCase="isLiked">Неинтересная</p>
       <p class="banner submitted" *ngSwitchCase="isAplly">Вы откликнулись</p>
       <p
@@ -12,7 +18,7 @@
       >
         {{ data.hot ? "Горячая" : "Новая" }}
       </p>
-    </container-element>
+    </ng-container>
 
     <div class="vacancy">
       <h3>{{ data.name }}</h3>
@@ -28,7 +34,9 @@
     </div>
 
     <div class="salary">
-      {{ data.salaryFrom }} - {{ data.salaryTo }} ₴
+      <span *ngIf="!!data.salaryFrom && !!data.salaryTo">
+        {{ data.salaryFrom }} — {{ data.salaryTo }} ₴
+      </span>
       <span>{{ data.salaryComment }}</span>
     </div>
 
@@ -45,12 +53,17 @@
     <div class="footerCard">
       <div class="action">
         <label *ngIf="!fileName" class="apply">
-          <input
+          <!-- <input
             type="file"
             accept=".doc, .docx, .txt, .rtf, .odt, .pdf"
             (input)="applyVacancy($event)"
-          />
+          /> -->
           <img src="/assets/images/Apply.svg" alt="Apply" />
+          <ngx-uploadcare-widget
+            public-key="e721f9ee3769e573ca2a"
+            (on-upload-complete)="applyVacancy($event)"
+          >
+          </ngx-uploadcare-widget>
           <span class="text">Откликнуться</span>
         </label>
         <button (click)="setFavorite()">
