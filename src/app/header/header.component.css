@@ -1,0 +1,12 @@
+header {
+    background-color: #FF5252;
+}
+
+div {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+header img {
+    padding: 20px 40px;
+}

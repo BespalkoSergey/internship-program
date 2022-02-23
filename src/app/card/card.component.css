@@ -1,0 +1,125 @@
+.card{
+   
+    width: 750px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px rgba(5, 5, 6, 0.05);
+    overflow: hidden;
+}
+
+.banner {
+    font-size: 14px;
+    padding: 2px 10px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.banner.hot {
+    background-color: #ffff00;
+    color: #a7a7a1;
+}
+
+.banner.new {
+    background-color: #FFE9E9;
+    color: #bc0002;
+}
+
+.logo {
+    max-width: 120px;
+
+    max-height: 60px;
+    display: flex;
+}
+
+.vacancy-desc {
+    display: flex;
+    align-items: top;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.company-name{
+    color: #FF5252;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.city-name {
+    color: #212527;
+    margin-left: 20px;
+}
+
+.badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.badges-list li {
+    list-style: none;
+    font-size: 14px;
+    padding: 5px;
+    line-height: 20px;
+    border: 1px solid #C8D1D6;
+    border-radius: 5px;
+    margin-top: 5px;
+    
+}
+
+.card-buttons {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px 0px 10px;
+}
+
+.card-buttons img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.respond-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.respond-btn p {
+    margin: 0px;
+    color: #FF5252;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+button {
+    cursor: pointer;
+}
+
+.respond-button {
+    display: flex;
+    align-items: center;
+}
+
+.respond-button button {
+    background: none;
+    border: none;
+}
+
+.publication-time {
+    color: #687E88;
+    font-size: 14px;
+}
+
+.disliked {
+    opacity: 0.4;
+}
