@@ -1,14 +1,19 @@
+import { DoublePipe } from './pipes/double.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ListComponent } from './list/list.component';
-import { CardComponent } from './card/card.component';
-import { FavoriteIconComponent } from './favorite-icon/favorite-icon.component';
-import { DislikeIconComponent } from './dislike-icon/dislike-icon.component';
-import { ErrorComponent } from './error/error.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ListComponent } from './components/list/list.component';
+import { CardComponent } from './components/card/card.component';
+import { DislikeIconComponent } from './ui/dislike-icon/dislike-icon.component';
+import { FavoriteIconComponent } from './ui/favorite-icon/favorite-icon.component';
+import { ErrorComponent } from './components/error/error.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,19 @@ import { ErrorComponent } from './error/error.component';
     HeaderComponent,
     ListComponent,
     CardComponent,
-    FavoriteIconComponent,
+    DoublePipe,
     DislikeIconComponent,
+    FavoriteIconComponent,
     ErrorComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,21 @@
+.filters-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+}
+
+.search-suggestions{
+    max-width: 650px;
+    min-height: 400px;
+    background: #fff;
+    margin: 0 auto;
+    padding: 20px;
+}

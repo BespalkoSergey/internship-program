@@ -1,0 +1,12 @@
+<div class="filters-div">
+  <input type="text" [formControl]="searchInput" placeholder="search"/>
+  <pagination-controls [maxSize]="5" (pageChange)="page = $event" ></pagination-controls>
+  <span>Only vacancies in Ukrainian</span> <input type="checkbox" name="ukrainian" id="ukrainian" (change)="toggleUkrainian()" [formControl]="ukrainianCheckbox">
+</div>
+<div class="search-suggestions">
+  
+</div>
+
+<div class="list" *ngIf="vacancies$ | async as list">
+  <app-card *ngFor="let vacancy of list | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalLength }" [vacancy]="vacancy"></app-card>
+</div>
