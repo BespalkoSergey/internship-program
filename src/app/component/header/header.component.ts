@@ -26,10 +26,11 @@ export class HeaderComponent {
 
   search=new FormControl()
   keyWord:string=''
-  name:Observable<string[]>
+  name:any//Observable<string[]>
   cities:any
   isData:boolean=false
   towns:ITown[]
+  //towns:any
 
   constructor(private autoService:AutocompleteService,
               private listService:ListService,
@@ -41,19 +42,26 @@ export class HeaderComponent {
       vacancyCount:el.vacancyCount,
       centerId:el.centerId
     })))]
-
-    this.name=this.autoService.vacList$
-
-   /* this.city.fetchCity().subscribe(()=>{
+   /* this.city.fetchCity().subscribe((el:cityType)=>{
+      console.log('header',el)
       //this.towns=[...new Set(town.filter(el=>el.vacancyCount>0).map(el=>el.ua))]
+      this.towns=[...new Set(town.filter(el=>el.vacancyCount>0).map(el=> ({
+        city:el.ua,
+        vacancyCount:el.vacancyCount,
+        centerId:el.centerId
+      })))]
     })*/
+    //this.name=this.autoService.vacList$
 
     this.search.valueChanges
       .pipe(
         tap(el=> this.autoService.termName=el),
         debounceTime(300),
         map(value => value.trim()),
-        distinctUntilChanged())
+        distinctUntilChanged(),
+        tap(()=>{
+          this.name=this.autoService.vacList$
+        }))
       .subscribe(data => {
         this.autoService.setTerm(data)
         this.keyWord=data
@@ -72,7 +80,6 @@ export class HeaderComponent {
     if(find){
       this.listService.setCityId(find?.centerId)
     }
-
   }
   onBlur() {
       this.autoService.setTerm('')
