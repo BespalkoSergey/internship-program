@@ -1,8 +1,25 @@
+h2{
+  padding: 0;
+  height: 20px;
+}
+
 .list{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 20px;
-  padding: 40px;
+  padding: 5px;
+  margin-top: 20px;
+
+}
+
+.has-text-centered{
+  margin: -10px 0;
+
+}
+.infoPag{
+  display: flex;
+  min-width: 750px;
+  align-items: center;
 }

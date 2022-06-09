@@ -1,1 +1,39 @@
-<img src="/assets/image/Logo-Regular.png" alt="Rabota logo">
+
+<div class="header" >
+    <div>
+      <img src="/assets/image/Logo-Regular.png" alt="Rabota logo">
+    </div>
+
+  <div class="inputDiv">
+    <label for="search" class="labelSearch">
+      <mat-icon>search</mat-icon>
+    </label>
+   <!-- TODO: 'Add blur on click no input or autoComplete'-->
+    <input id="search" type="text" placeholder="Search" [formControl]="search" (keydown.enter)="fetchChange(this.keyWord)" (blur)="onBlur()">
+    <div class="city">
+      <mat-icon class="iconLocation"> location_searching </mat-icon>
+      <input type="text" list="city" placeholder="All Ukraine"  (change)="searchOnCity($event)" (dblclick)="emptySearch()" >
+     <!-- <button mat-button [matMenuTriggerFor]="menu">{{this.btnname}}</button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button (click)="btnName(item)" *ngFor="let item of towns " mat-menu-item>{{item.city}}</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>-->
+      <datalist class="datalist" id="city" >
+        <option class="optionCity" *ngFor="let item of towns  "  [value]="item.city" >
+        </option>
+      </datalist>
+    </div>
+  </div>
+
+  <div class="autoComplete" *ngIf="isData">
+    <div *ngFor="let item of name | async"  >
+      <div class="complete"  (mousedown)="fetchChange(item)">
+        <mat-icon>search</mat-icon>
+        <span  [innerHTML]="item |HighlightSearch:this.keyWord" class="items"></span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+

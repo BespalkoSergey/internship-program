@@ -1,6 +1,7 @@
 <div *ngIf="data" class="card" [ngStyle]="{opacity: (isLiked||isApply)?'0.5':'1'}">
-  <img src="../../../assets/image/image%2057.png" alt="">
+  <!--<img src="../../../assets/image/image%2057.png" alt="">-->
 
+  <img [src]="data.designBannerFullUrl" alt="">
   <div class="container">
 
     <!--<div class="banner"  [ngSwitch]="status.id">

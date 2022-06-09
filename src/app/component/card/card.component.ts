@@ -1,15 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {VacancyType} from "../../../assets/data/vacancy";
 
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
 
-  file: File | null = null
   isLiked = false
   isApply = true
   isFavorite = false
@@ -20,14 +20,9 @@ export class CardComponent {
     text:'text',
     styled:'',
     id:5
-    // style: {
-    //   color:'',
-    //   backgroundColor:''
-    // }
   }
 
   data: VacancyType | null = null
-
 
   @Input() set vacancy(vacancy: VacancyType) {
     this.data = vacancy
@@ -46,19 +41,19 @@ export class CardComponent {
 
   favorite() {
     this.isFavorite = !this.isFavorite
-
   }
 
   yourOnUploadHandler(file: any) {
     if (!file) {
       console.log('er')
     }
-    console.log(file)
+    //console.log(file)
     this.isApply=true
     this.url=file.originalUrl
   }
 
   yourOnChangeHandler(file: any) {
+
     file.promise().then((res:any)=>{
       if(res.size>2000000){
         this.isError=true
